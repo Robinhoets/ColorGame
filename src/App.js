@@ -1,11 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import Grid from './components/Grid.js'
 
 function App() {
   return (
     <div>
-      Hello World
+      <Grid />
     </div>
   );
 }
