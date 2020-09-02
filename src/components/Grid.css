@@ -1,0 +1,23 @@
+/*
+ *		Grid CSS
+ */
+
+ .flex-container{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+ }
+
+ .square{
+  position: relative;
+  flex:calc(25% - 20px);
+  margin: 5px;
+  overflow: hidden;
+  background: black;
+ }
+
+ .square:after {
+  content: "";
+  display: block;
+  padding-top: 75%;
+}
