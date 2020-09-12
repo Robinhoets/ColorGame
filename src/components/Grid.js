@@ -6,7 +6,8 @@ export default class Grid extends Component {
 	constructor(){ 
 		super();
 	    this.state={
-	      color : '#00BCD4'	 
+	      color : '#00BCD4',
+	      numSquares: 10,
 	    }
   	}
 
@@ -16,27 +17,18 @@ export default class Grid extends Component {
 		this.setState({color:ColorCode})
 	}
 
+
 	render() {
+			let sq = []
+			for(let i=0; i<16; i++){
+				sq.push(<div className="square" style={{backgroundColor:this.state.color}}>HELLO</div>)
+			}
 			return(
 				<div>
+
 					<button onClick={()=> this.changeColor()}> change me </button>
 					<div className="flex-container">
-						<div className="square" style={{backgroundColor:this.state.color}}>HELLO</div>
-						<div className="square">HELLO</div>
-						<div className="square">HELLO</div>
-						<div className="square">HELLO</div>
-						<div className="square">HELLO</div>
-						<div className="square">HELLO</div>
-						<div className="square">HELLO</div>
-						<div className="square">HELLO</div>
-						<div className="square">HELLO</div>
-						<div className="square">HELLO</div>
-						<div className="square">HELLO</div>
-						<div className="square">HELLO</div>
-						<div className="square">HELLO</div>
-						<div className="square">HELLO</div>
-						<div className="square">HELLO</div>
-						<div className="square">HELLO</div>
+						{sq}
 					</div>
 				</div>
 			);		
