@@ -6,21 +6,26 @@ export default class Grid extends Component {
 	constructor(){ 
 		super();
 	    this.state={
-	      color : '#00BCD4',
+	      color : [],
 	      numSquares: 10,
 	    }
   	}
 
 	changeColor = () => {
-		var ColorCode = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + 
+		let colors = []
+		for(let i=0; i<16; i++){
+			var ColorCode = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + 
 						   ',' + (Math.floor(Math.random() * 256)) + ')';
-		this.setState({color:ColorCode})
+				colors.push(ColorCode)
+		}
+
+		this.setState({color:colors})
 	}
 
 	square(){
 		let sq = []
 		for(let i=0; i<16; i++){
-			sq.push(<div className="square" style={{backgroundColor:this.state.color}}>HELLO</div>)
+			sq.push(<div className="square" style={{backgroundColor:this.state.color[i]}}>HELLO</div>)
 		}
 		return sq
 	}
