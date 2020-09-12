@@ -17,18 +17,21 @@ export default class Grid extends Component {
 		this.setState({color:ColorCode})
 	}
 
+	square(){
+		let sq = []
+		for(let i=0; i<16; i++){
+			sq.push(<div className="square" style={{backgroundColor:this.state.color}}>HELLO</div>)
+		}
+		return sq
+	}
 
 	render() {
-			let sq = []
-			for(let i=0; i<16; i++){
-				sq.push(<div className="square" style={{backgroundColor:this.state.color}}>HELLO</div>)
-			}
 			return(
 				<div>
 
 					<button onClick={()=> this.changeColor()}> change me </button>
 					<div className="flex-container">
-						{sq}
+						{this.square()}
 					</div>
 				</div>
 			);		
