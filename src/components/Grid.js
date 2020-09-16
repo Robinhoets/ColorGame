@@ -7,7 +7,6 @@ export default class Grid extends Component {
 		super();
 	    this.state={
 	      color : [],
-	      numSquares: 10,
 	    }
   	}
 
@@ -22,10 +21,14 @@ export default class Grid extends Component {
 		this.setState({color:colors})
 	}
 
+	logColorInformation = (color) => {
+		console.log("in log color information", color)
+	}
+
 	square(){
 		let sq = []
 		for(let i=0; i<16; i++){
-			sq.push(<div className="square" style={{backgroundColor:this.state.color[i]}}>HELLO</div>)
+			sq.push(<button onClick={() => this.logColorInformation(this.state.color[i])} className="square" style={{backgroundColor:this.state.color[i]}}>Pick Me!</button>)
 		}
 		return sq
 	}
