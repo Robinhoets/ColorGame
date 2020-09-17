@@ -7,6 +7,8 @@ export default class Grid extends Component {
 		super();
 	    this.state={
 	      color : [],
+	      data :{},
+	      id : 0,
 	    }
   	}
 
@@ -21,14 +23,21 @@ export default class Grid extends Component {
 		this.setState({color:colors})
 	}
 
-	logColorInformation = (color) => {
-		console.log("in log color information", color)
+	logColorInformation = (color, location) => {
+		console.log("in log color information", color + " " + location)
+		var tempDataPoint = {location, color}
+		var tempState = this.state.data
+		var tempID = this.state.id
+		tempState[tempID] = tempDataPoint
+		tempID++
+		this.setState({data:tempState, id:tempID})
+		console.log("FINAL", this.state.data)
 	}
 
 	square(){
 		let sq = []
 		for(let i=0; i<16; i++){
-			sq.push(<button onClick={() => this.logColorInformation(this.state.color[i])} className="square" style={{backgroundColor:this.state.color[i]}}>Pick Me!</button>)
+			sq.push(<button onClick={() => this.logColorInformation(this.state.color[i], i)} className="square" style={{backgroundColor:this.state.color[i]}}>Pick Me!</button>)
 		}
 		return sq
 	}
