@@ -21,6 +21,8 @@ export default class Grid extends Component {
 	      color : [],
 	      data :{},
 	      id : 0,
+
+	      lastTime : null,
 	    }
   	}
 
@@ -28,11 +30,28 @@ export default class Grid extends Component {
  *			Functions area
  ***********************************/
 
+	/*
+	 *	This is for testing
+	 */
+	logInfo(){
+		console.log(this.state.data)
+	}
+
+	/*
+	 *		@return logs initial time
+	 */
+	startGame(){
+		var startTime = Date.now()
+		this.setState({lastTime: startTime})
+	}
+
  	/*
  	 *		@return Sets the state's color array with randomly
  	 *				generated color.
  	 */
 	changeColor = () => {
+		var thisTime = Date.now()
+		this.setState({lastTime: thisTime})
 		let colors = []
 		for(let i=0; i<16; i++){
 			var ColorCode = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' 
@@ -42,6 +61,7 @@ export default class Grid extends Component {
 		}
 
 		this.setState({color:colors})
+		console.log(this.state.lastTime, Date.now())
 	}
 
 	/*
@@ -49,8 +69,9 @@ export default class Grid extends Component {
 	 *		@input A chose location
 	 *		@return Sets the state data variable
 	 */
-	logColorInformation = (color, location) => {
-		var tempDataPoint = {location, color}
+	logColorInformation = (color, location, time) => {
+		var lastTime = this.state.lastTime
+		var tempDataPoint = {location, color, lastTime, time}
 		var tempState = this.state.data
 		var tempID = this.state.id
 		tempState[tempID] = tempDataPoint
@@ -65,18 +86,20 @@ export default class Grid extends Component {
 	square(){
 		let sq = []
 		for(let i=0; i<16; i++){
-			sq.push(<button onClick={() => this.logColorInformation(this.state.color[i], i)} 
+			sq.push(<button onClick={() => this.logColorInformation(this.state.color[i], i, Date.now())} 
 							className="square" style={{backgroundColor:this.state.color[i]}}>Pick Me!
 					</button>)
 		}
 		return sq
 	}
 
+
 	render() {
 			return(
 				<div>
-
+					<button onClick={()=> this.startGame()}> Start Game </button>
 					<button onClick={()=> this.changeColor()}> change me </button>
+					<button onClick={()=> this.logInfo()}> Log Info </button>
 					<div className="flex-container">
 						{this.square()}
 					</div>
