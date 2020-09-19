@@ -26,9 +26,18 @@ export default class Grid extends Component {
 	    }
   	}
 
-/***********************************
- *			Functions area
- ***********************************/
+  	/***********************************
+  	 *			Handlers area
+  	 ***********************************/	
+
+  	 handleChange = () => {
+  	 	this.logLastTime()
+  	 	this.changeColor()
+  	 }
+
+	/***********************************
+	 *			Functions area
+	 ***********************************/
 
 	/*
 	 *	This is for testing
@@ -45,13 +54,16 @@ export default class Grid extends Component {
 		this.setState({lastTime: startTime})
 	}
 
+	logLastTime(){
+		var thisTime = Date.now()
+		this.setState({lastTime: thisTime})
+	}
+
  	/*
  	 *		@return Sets the state's color array with randomly
  	 *				generated color.
  	 */
 	changeColor = () => {
-		var thisTime = Date.now()
-		this.setState({lastTime: thisTime})
 		let colors = []
 		for(let i=0; i<16; i++){
 			var ColorCode = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' 
@@ -98,7 +110,7 @@ export default class Grid extends Component {
 			return(
 				<div>
 					<button onClick={()=> this.startGame()}> Start Game </button>
-					<button onClick={()=> this.changeColor()}> change me </button>
+					<button onClick={()=> this.handleChange()}> change me </button>
 					<button onClick={()=> this.logInfo()}> Log Info </button>
 					<div className="flex-container">
 						{this.square()}
