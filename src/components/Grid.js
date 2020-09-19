@@ -83,7 +83,8 @@ export default class Grid extends Component {
 	 */
 	logColorInformation = (color, location, time) => {
 		var lastTime = this.state.lastTime
-		var tempDataPoint = {location, color, lastTime, time}
+		var elapsedTime = time - lastTime
+		var tempDataPoint = {location, color, elapsedTime}
 		var tempState = this.state.data
 		var tempID = this.state.id
 		tempState[tempID] = tempDataPoint
