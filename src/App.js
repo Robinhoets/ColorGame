@@ -3,12 +3,15 @@ import './App.css';
 
 import Grid from './components/Grid.js'
 
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {increment} from './actions'
 
 function App() {
-  const counter = useSelector(state => state.counter)
+  const counter = useSelector(state => state.counterReducer)
+  const dispatch = useDispatch();
   return (
     <div>
+      <button onClick={() => dispatch(increment())}>+</button>
       <h2>Counter: {counter}</h2>
       <Grid />
     </div>
