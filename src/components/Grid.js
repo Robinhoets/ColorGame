@@ -12,6 +12,7 @@
 
 import React, {Component} from 'react';
 import './Grid.css';
+import Modal from 'react-modal';
 
 export default class Grid extends Component {
 
@@ -23,6 +24,8 @@ export default class Grid extends Component {
 	      id : 0,
 
 	      lastTime : null,
+
+	      startModalOpen:true,
 	    }
   	}
 
@@ -106,6 +109,22 @@ export default class Grid extends Component {
 		return sq
 	}
 
+	startModalContent(){
+		return(
+			<> 
+				Color Game
+				<button onClick={() => this.setState({startModalOpen:false})}> Start Game </button>
+
+			</>
+		)
+	}
+	closeModal(){
+		this.setStat({startModalOpen:false})
+	}
+	afterOpenModal() {
+    	
+  	}
+
 
 	render() {
 			return(
@@ -116,6 +135,13 @@ export default class Grid extends Component {
 					<div className="flex-container">
 						{this.square()}
 					</div>
+			        <Modal
+			          isOpen={this.state.startModalOpen}
+			          onAfterOpen={this.afterOpenModal}
+			          onRequestClose={this.closeModal}
+			        >
+			        {this.startModalContent()}
+			        </Modal>
 				</div>
 			);		
 	}
