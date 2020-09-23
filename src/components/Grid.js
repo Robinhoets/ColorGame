@@ -133,7 +133,6 @@ export default class Grid extends Component {
 	render() {
 			return(
 				<div>
-					<button onClick={()=> this.startGame()}> Start Game </button>
 					<button onClick={()=> this.handleChange()}> change me </button>
 					<button onClick={()=> this.logInfo()}> Log Info </button>
 					<div className="flex-container">
