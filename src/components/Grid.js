@@ -94,6 +94,7 @@ export default class Grid extends Component {
 		tempState[tempID] = tempDataPoint
 		tempID++
 		this.setState({data:tempState, id:tempID})
+		this.changeColor()
 	}
 
 	/*
