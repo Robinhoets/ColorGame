@@ -114,12 +114,15 @@ export default class Grid extends Component {
 			<> 
 				Color Game
 				<button onClick={() => this.setState({startModalOpen:false})}> Start Game </button>
+				<p>Click the start game button. Then out of the four rows and four columns
+					select the color you like the most. After selection, click the change me
+					button to select the next color.</p>
 
 			</>
 		)
 	}
-	closeModal(){
-		this.setStat({startModalOpen:false})
+	closeModal = () => {
+		this.setState({startModalOpen:false})
 	}
 	afterOpenModal() {
     	
