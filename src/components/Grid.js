@@ -54,7 +54,8 @@ export default class Grid extends Component {
 	 */
 	startGame(){
 		var startTime = Date.now()
-		this.setState({lastTime: startTime})
+		this.setState({lastTime: startTime, startModalOpen:false})
+		this.changeColor()
 	}
 
 	logLastTime(){
@@ -113,7 +114,7 @@ export default class Grid extends Component {
 		return(
 			<> 
 				Color Game
-				<button onClick={() => this.setState({startModalOpen:false})}> Start Game </button>
+				<button onClick={()=>this.startGame()}> Start Game </button>
 				<p>Click the start game button. Then out of the four rows and four columns
 					select the color you like the most. After selection, click the change me
 					button to select the next color.</p>
