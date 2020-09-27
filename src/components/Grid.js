@@ -142,6 +142,7 @@ export default class Grid extends Component {
 			          isOpen={this.state.startModalOpen}
 			          onAfterOpen={this.afterOpenModal}
 			          onRequestClose={this.closeModal}
+			          className=".modal-container"
 			        >
 			        {this.startModalContent()}
 			        </Modal>
